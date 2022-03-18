@@ -60,7 +60,13 @@ jobs:
           sed -i 's/luci-theme-bootstrap/luci-theme-argon/' feeds/luci/collections/luci/Makefile
           
       - name: Generate configuration file
-        run: make defconfig
+        run: |
+          rm -f ./config*
+          touch ./config
+          cat >> .config <<EOF
+          CONFIG_PACKAGE_luci-app-openvpn=y
+          EOF
+          make defconfig
            
       - name: Make download
         run: |
