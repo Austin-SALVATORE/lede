@@ -61,7 +61,6 @@ jobs:
           
       - name: Generate configuration file
         run: |
-          rm -f ./config*
           touch ./config
           cat >> .config <<EOF
           CONFIG_PACKAGE_luci-app-openvpn=y
